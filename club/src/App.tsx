@@ -1,28 +1,16 @@
-import React from "react";
-import logo from "./logo.svg";
+import elrondLogo from "./logo512.png";
 import styled from "styled-components";
 
-function App() {
+export default function App() {
   return (
     <StyledWrapperDiv>
       <StyledAppHeader>
-        <StyledAppLogo src={logo} alt='logo' />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <StyledLink
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </StyledLink>
+        <StyledAppLogo src={elrondLogo} alt='logo' />
+        <p>Hodl the coin!</p>
       </StyledAppHeader>
     </StyledWrapperDiv>
   );
 }
-
-export default App;
 
 const StyledWrapperDiv = styled.div`
   align-items: center;
@@ -32,6 +20,7 @@ const StyledAppLogo = styled.img`
   height: 40vmin;
   pointer-events: none;
   animation: App-logo-spin infinite 20s linear;
+  margin-bottom: 20px;
   @keyframes App-logo-spin {
     from {
       transform: rotate(0deg);
@@ -43,7 +32,7 @@ const StyledAppLogo = styled.img`
 `;
 
 const StyledAppHeader = styled.header`
-  background-color: #282c34;
+  background-color: #4b68a1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -51,8 +40,4 @@ const StyledAppHeader = styled.header`
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-`;
-
-const StyledLink = styled.a`
-  color: #61dafb;
 `;
