@@ -8,9 +8,9 @@ export default function App() {
       <StyledAppHeader>
         <StyledAppLogo src={elrondLogo} alt='logo' />
         <p>Hodl the coin!</p>
-
-        <ElrondDApp />
       </StyledAppHeader>
+
+      <ElrondDApp />
     </StyledWrapperDiv>
   );
 }
@@ -20,10 +20,10 @@ const StyledWrapperDiv = styled.div`
 `;
 
 const StyledAppLogo = styled.img`
-  height: 40vmin;
+  height: 250px;
   pointer-events: none;
   animation: App-logo-spin infinite 20s linear;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   @keyframes App-logo-spin {
     from {
       transform: rotate(0deg);

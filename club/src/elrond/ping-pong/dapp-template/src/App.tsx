@@ -12,7 +12,7 @@ export default function App() {
   return (
     <Dapp.Context config={config}>
       <ContextProvider>
-        <Layout>
+        <StyledLayout>
           <Switch>
             <Route
               path={routeNames.unlock}
@@ -57,8 +57,12 @@ export default function App() {
             ))}
             <Route component={PageNotFoud} />
           </Switch>
-        </Layout>
+        </StyledLayout>
       </ContextProvider>
     </Dapp.Context>
   );
 }
+
+const StyledLayout = styled(Layout)`
+  color: black;
+`;
