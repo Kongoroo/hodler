@@ -2,6 +2,7 @@
   "name": "club",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "@elrondnetwork/dapp": "0.0.45",
     "@elrondnetwork/dapp-utils": "0.0.10",
