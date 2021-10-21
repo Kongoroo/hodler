@@ -1,4 +1,4 @@
-import React from "react";
+import "./assets/sass/theme.scss";
 import * as Dapp from "@elrondnetwork/dapp";
 import { Route, Switch } from "react-router-dom";
 import Layout from "./components/Layout";
@@ -7,7 +7,6 @@ import * as config from "./config";
 import { ContextProvider } from "./context";
 import routes, { routeNames } from "./routes";
 import styled from "styled-components";
-import "./assets/sass/theme.scss";
 
 export default function App() {
   return (
