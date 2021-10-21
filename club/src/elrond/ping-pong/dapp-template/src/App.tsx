@@ -7,6 +7,7 @@ import * as config from "./config";
 import { ContextProvider } from "./context";
 import routes, { routeNames } from "./routes";
 import styled from "styled-components";
+import "./assets/sass/theme.scss";
 
 export default function App() {
   return (
