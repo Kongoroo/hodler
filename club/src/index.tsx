@@ -5,7 +5,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 /* Elrond DApp styles */
-import "../src/assets/theme.scss";
+import "./src/assets/theme.scss";
 
 function Main() {
   return (
