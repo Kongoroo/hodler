@@ -9,6 +9,7 @@ import Actions from "./Actions";
 import { getTransactions } from "./helpers/asyncRequests";
 import TopInfo from "./TopInfo";
 import Transactions from "./Transactions";
+import styled from "styled-components";
 
 const Dashboard = () => {
   const ref = React.useRef(null);
@@ -40,35 +41,43 @@ const Dashboard = () => {
 
   if (transactionsFetched === false) {
     return (
-      <PageState
+      <StyledPageState
         svgComponent={
-          <FontAwesomeIcon icon={faBan} className="text-secondary fa-3x" />
+          <FontAwesomeIcon icon={faBan} className='text-secondary fa-3x' />
         }
-        title="Unavailable"
-        className="dapp-icon icon-medium"
+        title='Unavailable'
       />
     );
   }
 
   return (
-    <div className="container py-4" ref={ref}>
-      <div className="row">
-        <div className="col-12 col-md-10 mx-auto">
-          <div className="card shadow-sm rounded border-0">
-            <div className="card-body p-1">
-              <div className="card rounded border-0 bg-primary">
-                <div className="card-body text-center p-4">
-                  <TopInfo />
-                  <Actions />
-                </div>
-              </div>
-              <Transactions />
-            </div>
-          </div>
+    <div className='container py-4' ref={ref}>
+      <div className='card rounded border-0 bg-primary'>
+        <div className='card-body text-center p-4'>
+          <TopInfo />
+          <Actions />
         </div>
       </div>
+      <Transactions />
     </div>
   );
 };
 
 export default Dashboard;
+
+const StyledPageState = styled(PageState)`
+  padding: 5px;
+  border-radius: 50%;
+  background-color: $light;
+  width: 65px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  &.icon-medium {
+    width: 80px;
+    height: 80px;
+  }
+`;

@@ -1,4 +1,4 @@
-import "./assets/sass/theme.scss";
+// import "./assets/sass/theme.scss";
 import * as Dapp from "@elrondnetwork/dapp";
 import { Route, Switch } from "react-router-dom";
 import Layout from "./components/Layout";

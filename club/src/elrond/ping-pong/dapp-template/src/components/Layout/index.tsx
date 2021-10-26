@@ -3,6 +3,7 @@ import * as Dapp from "@elrondnetwork/dapp";
 import routes, { routeNames } from "../../routes";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import styled from "styled-components";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const { loggedIn } = Dapp.useContext();
@@ -16,16 +17,21 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   }, [loggedIn]);
 
   return (
-    <div className="bg-light d-flex flex-column flex-fill wrapper">
+    <StyledAppWrapper>
       <Navbar />
-      <main className="d-flex flex-column flex-grow-1">
+      <main className='d-flex flex-column flex-grow-1'>
         <Dapp.Authenticate routes={routes} unlockRoute={routeNames.unlock}>
           {children}
         </Dapp.Authenticate>
       </main>
       <Footer />
-    </div>
+    </StyledAppWrapper>
   );
 };
 
 export default Layout;
+
+const StyledAppWrapper = styled.div`
+  width: 90%;
+  margin: 0 auto;
+`;
