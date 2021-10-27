@@ -19,17 +19,35 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <StyledAppWrapper>
       <Navbar />
-      <main className='d-flex flex-column flex-grow-1'>
+      <StyledMainSection>
         <Dapp.Authenticate routes={routes} unlockRoute={routeNames.unlock}>
           {children}
         </Dapp.Authenticate>
-      </main>
+      </StyledMainSection>
       <Footer />
     </StyledAppWrapper>
   );
 };
 
 export default Layout;
+
+const StyledMainSection = styled.main`
+  padding: 15px;
+  border: 2px solid white;
+  border-radius: 5px;
+  display: flex;
+  a,
+  button {
+    color: white;
+    font-weight: bold;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 10px;
+    text-decoration: none;
+    background: transparent;
+    margin: 0 5px;
+  }
+`;
 
 const StyledAppWrapper = styled.div`
   width: 90%;

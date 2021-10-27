@@ -1,22 +1,37 @@
 import React from "react";
 import { ReactComponent as HeartIcon } from "../../../assets/img/heart.svg";
+import styled from "styled-components";
 
 const Footer = () => {
   return (
-    <footer className="text-center mt-2 mb-3">
+    <StyledFooterContainer>
       <div>
         <a
           {...{
             target: "_blank",
           }}
-          className="d-flex align-items-center"
-          href="https://elrond.com/"
+          className='d-flex align-items-center'
+          href='https://elrond.com/'
         >
-          Made with <HeartIcon className="mx-1" /> by Elrond Network.
+          Made with <StyledHeartIcon /> by Elrond Network.
         </a>
       </div>
-    </footer>
+    </StyledFooterContainer>
   );
 };
 
 export default Footer;
+
+const StyledFooterContainer = styled.footer`
+  color: white;
+  margin-top: 10px;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+`;
+
+const StyledHeartIcon = styled(HeartIcon)`
+  filter: invert(9%) sepia(97%) saturate(4602%) hue-rotate(355deg)
+    brightness(90%) contrast(100%);
+`;

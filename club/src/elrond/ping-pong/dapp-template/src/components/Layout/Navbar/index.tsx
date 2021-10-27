@@ -17,22 +17,17 @@ const Navbar = () => {
   };
 
   return (
-    <StyledNavBar className='bg-white border-bottom px-4 py-3'>
-      <div className='container-fluid'>
-        <Link
-          className='d-flex align-items-center navbar-brand mr-0'
-          to={loggedIn ? "/dashboard" : "/"}
-        >
-          {/* <ElrondLogo className="elrond-logo" /> */}
-          <span className='dapp-name text-muted'>{dAppName}</span>
-        </Link>
+    <StyledNavBar>
+      <Link to={loggedIn ? "/dashboard" : "/"}>
+        {/* <ElrondLogo className="elrond-logo" /> */}
+        <span className='dapp-name text-muted'>{dAppName}</span>
+      </Link>
 
-        {loggedIn && (
-          <StyledLogoutButton href='/' onClick={logOut}>
-            Close
-          </StyledLogoutButton>
-        )}
-      </div>
+      {loggedIn && (
+        <StyledLogoutButton href='/' onClick={logOut}>
+          Close
+        </StyledLogoutButton>
+      )}
     </StyledNavBar>
   );
 };
@@ -40,6 +35,8 @@ const Navbar = () => {
 export default Navbar;
 
 const StyledNavBar = styled(BsNavbar)`
+  display: flex;
+  margin-bottom: 20px;
   color: white;
   a {
     color: white;
