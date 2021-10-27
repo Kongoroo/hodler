@@ -42,11 +42,14 @@ const StyledNavBar = styled(BsNavbar)`
     color: white;
     font-weight: bold;
     border: 1px solid white;
+    background: rgba(167, 186, 209, 0.3);
     border-radius: 4px;
     padding: 10px;
     text-decoration: none;
-  }
-  :hover {
+    :hover {
+      transition: all 0.1s ease-in;
+      background: rgba(167, 186, 209, 0.5);
+    }
   }
 `;
 

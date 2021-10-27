@@ -44,8 +44,12 @@ const StyledMainSection = styled.main`
     border-radius: 4px;
     padding: 10px;
     text-decoration: none;
-    background: transparent;
+    background: rgba(167, 186, 209, 0.3);
     margin: 0 5px;
+    :hover {
+      transition: all 0.1s ease-in;
+      background: rgba(167, 186, 209, 0.5);
+    }
   }
 `;
 

@@ -24,7 +24,7 @@ export default Footer;
 
 const StyledFooterContainer = styled.footer`
   color: white;
-  margin-top: 10px;
+  margin: 10px 0 30px 0;
   a {
     color: white;
     text-decoration: none;
