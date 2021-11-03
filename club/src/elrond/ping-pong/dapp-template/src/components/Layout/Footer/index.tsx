@@ -5,17 +5,15 @@ import styled from "styled-components";
 const Footer = () => {
   return (
     <StyledFooterContainer>
-      <div>
-        <a
-          {...{
-            target: "_blank",
-          }}
-          className='d-flex align-items-center'
-          href='https://elrond.com/'
-        >
-          Made with <StyledHeartIcon /> by Elrond Network.
-        </a>
-      </div>
+      <a
+        {...{
+          target: "_blank",
+        }}
+        className='d-flex align-items-center'
+        href='https://elrond.com/'
+      >
+        Made with <StyledHeartIcon /> by Elrond Network.
+      </a>
     </StyledFooterContainer>
   );
 };
@@ -23,6 +21,7 @@ const Footer = () => {
 export default Footer;
 
 const StyledFooterContainer = styled.footer`
+  text-align: center;
   color: white;
   margin: 10px 0 30px 0;
   a {
