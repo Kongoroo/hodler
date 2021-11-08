@@ -5,15 +5,17 @@ import styled from "styled-components";
 const Footer = () => {
   return (
     <StyledFooterContainer>
-      <a
-        {...{
-          target: "_blank",
-        }}
-        className='d-flex align-items-center'
-        href='https://elrond.com/'
-      >
-        Made with <StyledHeartIcon /> by Elrond Network.
-      </a>
+      <div>
+        <a
+          {...{
+            target: "_blank",
+          }}
+          className='d-flex align-items-center'
+          href='https://elrond.com/'
+        >
+          Made with <StyledHeartIcon /> by Elrond Network.
+        </a>
+      </div>
     </StyledFooterContainer>
   );
 };

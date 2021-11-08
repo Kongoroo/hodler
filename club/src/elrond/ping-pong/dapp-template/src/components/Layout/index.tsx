@@ -9,8 +9,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   const { loggedIn } = Dapp.useContext();
   const refreshAccount = Dapp.useRefreshAccount();
 
-  console.log("children: ", children);
-
   React.useEffect(() => {
     if (loggedIn) {
       refreshAccount();

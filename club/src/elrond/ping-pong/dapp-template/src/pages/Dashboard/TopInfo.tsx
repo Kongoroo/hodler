@@ -2,6 +2,7 @@ import * as React from "react";
 import * as Dapp from "@elrondnetwork/dapp";
 import { contractAddress } from "../../config";
 import Denominate from "./../../components/Denominate";
+import styled from "styled-components";
 
 const TopInfo = () => {
   const {
@@ -10,22 +11,37 @@ const TopInfo = () => {
   } = Dapp.useContext();
 
   return (
-    <div className="text-white" data-testid="topInfo">
-      <div className="mb-1">
-        <span className="opacity-6 mr-1">Your address:</span>
-        <span data-testid="accountAddress"> {address}</span>
-      </div>
-      <div className="mb-4">
-        <span className="opacity-6 mr-1">Contract address:</span>
-        <span data-testid="contractAddress"> {contractAddress}</span>
+    <StyledTopInfo>
+      <div className='mb-1'>
+        <StyledTopInfoText>Your address:</StyledTopInfoText>
+        <span data-testid='accountAddress'> {address}</span>
       </div>
       <div>
-        <h3 className="py-2">
-          <Denominate value={balance} dataTestId="balance" />
-        </h3>
+        <StyledTopInfoText>Contract address:</StyledTopInfoText>
+        <span data-testid='contractAddress'> {contractAddress}</span>
       </div>
-    </div>
+      <div>
+        <StyledBalance>
+          <Denominate value={balance} dataTestId='balance' />
+        </StyledBalance>
+      </div>
+    </StyledTopInfo>
   );
 };
 
 export default TopInfo;
+
+const StyledTopInfo = styled.div`
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 25px;
+`;
+
+const StyledTopInfoText = styled.span`
+  font-weight: bold;
+`;
+
+const StyledBalance = styled.h3`
+  margin: 15px 0 0 0;
+`;
