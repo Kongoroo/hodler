@@ -1,6 +1,8 @@
 import elrondLogo from "./logo512.png";
 import styled from "styled-components";
-import ElrondDApp from "./elrond/ping-pong/dapp-template/src/App";
+// import ElrondDApp from "./elrond/ping-pong/dapp-template/src/App";
+import Calculator from "./calculator";
+import UsageGraph from "./usageGraph";
 
 export default function App() {
   return (
@@ -10,7 +12,11 @@ export default function App() {
         <StyledHeadline>Hodl the coin!</StyledHeadline>
       </StyledAppHeader>
 
-      <ElrondDApp />
+      <Calculator />
+
+      <UsageGraph />
+
+      {/* <ElrondDApp /> */}
     </StyledWrapperDiv>
   );
 }
