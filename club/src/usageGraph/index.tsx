@@ -1,10 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
-import { Line } from "react-chartjs-2";
+import { Line, Chart } from "react-chartjs-2";
+import zoomPlugin from "chartjs-plugin-zoom";
+import { Button } from "react-bootstrap";
+
+Chart.register(zoomPlugin); // REGISTER PLUGIN
+
+// https://data.elrond.com/latest/quoteshistorical/egld/price
 
 const UsageGraph = () => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
+  const [resetChartZoom, setResetChartZoom] = useState(false);
 
   const useFetch = (url: string, options: any) => {
     useEffect(() => {
@@ -21,8 +28,6 @@ const UsageGraph = () => {
             delete val["value"];
             return val;
           });
-
-          console.log(chartJson);
 
           setResponse(chartJson);
         } catch (e) {
@@ -53,19 +58,66 @@ const UsageGraph = () => {
     ],
   };
 
-  const options = {
-    scales: {
-      y: {
-        beginAtZero: true,
+  const options: any = {
+    plugins: {
+      limits: {
+        x: { min: -100, max: 100, minRange: 50 },
+        y: { min: -100, max: 100, minRange: 50 },
+      },
+      zoom: {
+        zoom: {
+          wheel: {
+            enabled: true, // SET SCROOL ZOOM TO TRUE
+          },
+          mode: "xy",
+          speed: 100,
+        },
+        pan: {
+          enabled: true,
+          mode: "xy",
+          speed: 100,
+        },
       },
     },
   };
 
+  const useHookWithRefCallback = () => {
+    const chartRef = useRef(null);
+    const setRef = useCallback((node) => {
+      if (chartRef.current) {
+        // Make sure to cleanup any events/references added to the last instance
+      }
+
+      if (node) {
+        // Check if a node is actually passed. Otherwise node would be null.
+        // You can now do what you need to, addEventListeners, measure, etc.
+        console.log(node);
+        if (resetChartZoom) {
+          node.resetZoom();
+        }
+      }
+
+      // Save a reference to the node
+      chartRef.current = node;
+    }, []);
+
+    return [setRef];
+  };
+
+  const [chartRef] = useHookWithRefCallback();
+
+  const resetChartZoomFunc = () => {
+    setResetChartZoom(!resetChartZoom);
+  };
+
   return response ? (
     <StyledGraphContainer>
+      {/* <div>EGLD price: {fetchPrice}</div> */}
+
       <h1>Daily transactions</h1>
 
-      <Line data={data} options={options} />
+      <Line ref={chartRef} data={data} options={options} />
+      <Button onClick={resetChartZoomFunc}>Reset chart</Button>
     </StyledGraphContainer>
   ) : (
     <StyledGraphContainer>Loading...</StyledGraphContainer>
