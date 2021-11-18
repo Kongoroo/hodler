@@ -20,13 +20,13 @@ const UsageGraph = () => {
           const res = await fetch(url, options);
           const json = await res.json();
 
-          const chartJson = json.map((val: any) => {
-            val["x"] = val["time"];
-            delete val["time"];
+          const chartJson = json.map((key: any) => {
+            key["x"] = key["time"];
+            delete key["time"];
 
-            val["y"] = val["value"];
-            delete val["value"];
-            return val;
+            key["y"] = key["value"];
+            delete key["value"];
+            return key;
           });
 
           setResponse(chartJson);
@@ -73,6 +73,11 @@ const UsageGraph = () => {
           speed: 100,
         },
         pan: {
+          enabled: true,
+          mode: "xy",
+          speed: 100,
+        },
+        pinch: {
           enabled: true,
           mode: "xy",
           speed: 100,
