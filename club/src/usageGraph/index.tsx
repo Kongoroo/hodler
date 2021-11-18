@@ -4,7 +4,6 @@ import "hammerjs";
 import { Line, Chart } from "react-chartjs-2";
 import zoomPlugin from "chartjs-plugin-zoom";
 import { Button } from "react-bootstrap";
-import { getEnabledCategories } from "trace_events";
 
 Chart.register(zoomPlugin); // REGISTER PLUGIN
 
