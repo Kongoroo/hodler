@@ -100,7 +100,6 @@ const UsageGraph = () => {
       if (node) {
         // Check if a node is actually passed. Otherwise node would be null.
         // You can now do what you need to, addEventListeners, measure, etc.
-        console.log(node);
         if (resetChartZoom) {
           node.resetZoom();
         }
@@ -137,7 +136,11 @@ export default UsageGraph;
 
 const StyledGraphContainer = styled.div`
   background-color: #fff;
+  border-radius: 5px;
   margin: 0 auto;
   padding: 15px;
   width: 80%;
+  && h1 {
+    margin: 0 0 16px 0;
+  }
 `;
