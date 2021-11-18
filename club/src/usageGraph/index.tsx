@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import "hammerjs";
 import { Line, Chart } from "react-chartjs-2";
 import zoomPlugin from "chartjs-plugin-zoom";
 import { Button } from "react-bootstrap";
+import { getEnabledCategories } from "trace_events";
 
 Chart.register(zoomPlugin); // REGISTER PLUGIN
 
@@ -68,6 +70,9 @@ const UsageGraph = () => {
         zoom: {
           wheel: {
             enabled: true, // SET SCROOL ZOOM TO TRUE
+          },
+          pinch: {
+            enabled: true,
           },
           mode: "xy",
           speed: 100,
