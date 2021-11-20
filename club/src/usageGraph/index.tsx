@@ -1,50 +1,20 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import styled from "styled-components";
+import React, { useCallback, useRef, useState } from "react";
 import "hammerjs";
 import { Line, Chart } from "react-chartjs-2";
 import zoomPlugin from "chartjs-plugin-zoom";
 import { Button } from "react-bootstrap";
+import { useGraphFetch } from "../utils/fetch";
 
 Chart.register(zoomPlugin); // REGISTER PLUGIN
 
 // https://data.elrond.com/latest/quoteshistorical/egld/price
 
 const UsageGraph = () => {
-  const [response, setResponse] = useState(null);
-  const [error, setError] = useState(null);
-  const [resetChartZoom, setResetChartZoom] = useState(false);
-
-  const useFetch = (url: string, options: any) => {
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const res = await fetch(url, options);
-          const json = await res.json();
-
-          const chartJson = json.map((key: any) => {
-            key["x"] = key["time"];
-            delete key["time"];
-
-            key["y"] = key["value"];
-            delete key["value"];
-            return key;
-          });
-
-          setResponse(chartJson);
-        } catch (e) {
-          setError(error);
-        }
-      };
-
-      fetchData();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-  };
-
-  useFetch(
+  const { response: isLoading, response } = useGraphFetch(
     `https://data.elrond.com/complete/transactionshistorical/transactions/count_24h`,
     {}
   );
+  const [resetChartZoom, setResetChartZoom] = useState(false);
 
   const data = {
     labels: ["1"],
@@ -118,29 +88,24 @@ const UsageGraph = () => {
     setResetChartZoom(!resetChartZoom);
   };
 
-  return response ? (
-    <StyledGraphContainer>
+  return isLoading ? (
+    <div>
       {/* <div>EGLD price: {fetchPrice}</div> */}
 
       <h1>Daily transactions</h1>
 
-      <Line ref={chartRef} data={data} options={options} />
+      <Line
+        ref={chartRef}
+        data={data}
+        options={options}
+        height={100}
+        width={250}
+      />
       <Button onClick={resetChartZoomFunc}>Reset chart</Button>
-    </StyledGraphContainer>
+    </div>
   ) : (
-    <StyledGraphContainer>Loading...</StyledGraphContainer>
+    <div>Loading...</div>
   );
 };
 
 export default UsageGraph;
-
-const StyledGraphContainer = styled.div`
-  background-color: #fff;
-  border-radius: 5px;
-  margin: 0 auto;
-  padding: 15px;
-  width: 80%;
-  && h1 {
-    margin: 0 0 16px 0;
-  }
-`;

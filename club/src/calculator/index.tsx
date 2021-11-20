@@ -22,7 +22,7 @@ const Calculator = () => {
   }, [moneyValue, apr, daily]);
 
   return (
-    <StyledCalculatorContainer>
+    <div>
       <h1>APR rewards calculator</h1>
 
       <StyledDurationContainer>
@@ -76,22 +76,11 @@ const Calculator = () => {
             }).format(totalAprValue)}
         </StyledResultsContainer>
       </StyledValueContainer>
-    </StyledCalculatorContainer>
+    </div>
   );
 };
 
 export default Calculator;
-
-const StyledCalculatorContainer = styled.div`
-  background-color: #fff;
-  border-radius: 5px;
-  padding: 15px;
-  margin: 0 auto 30px auto;
-  width: 80%;
-  && h1 {
-    margin: 0 0 16px 0;
-  }
-`;
 
 const StyledDurationContainer = styled.div`
   margin: 10px;
